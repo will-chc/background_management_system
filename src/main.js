@@ -15,6 +15,8 @@ import App from './App.vue'
 //按需引入element ui
 import {Form,Icon,Input,FormItem} from 'element-ui'
 import {Aside,Menu,Submenu,MenuItemGroup,MenuItem} from 'element-ui'
+import {Dropdown,DropdownMenu,DropdownItem,Button} from 'element-ui'
+
 
 Vue.component(Icon.name,Icon);
 Vue.component(FormItem.name,FormItem);
@@ -25,6 +27,10 @@ Vue.component(Menu.name,Menu);
 Vue.component(Submenu.name,Submenu);
 Vue.component(MenuItemGroup.name,MenuItemGroup);
 Vue.component(MenuItem.name,MenuItem);
+Vue.component(DropdownMenu.name,DropdownMenu);
+Vue.component(DropdownItem.name,DropdownItem);
+Vue.component(Button.name,Button);
+Vue.component(Dropdown.name,Dropdown);
 
 
 Vue.config.productionTip =false;

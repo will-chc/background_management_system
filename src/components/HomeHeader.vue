@@ -6,11 +6,12 @@
       ></span>
       <span class="tag">首页</span>
       <div class="right-menu">
-          
+        <Search></Search>
         <Avartar></Avartar>
-        
-       
       </div>
+    </div>
+    <div class="tag-view">
+      <Tag></Tag>
     </div>
   </div>
 </template>
@@ -18,8 +19,9 @@
 <script>
 import Avartar from "./Avartar.vue";
 import Search from "./Search.vue";
+import Tag from './Tag.vue';
 export default {
-  components: { Avartar, Search },
+  components: { Avartar, Search, Tag },
   name: "HomeHeader",
   data() {
     return {
@@ -67,7 +69,7 @@ export default {
   color: #97a8be;
 }
 .right-menu {
-  float: right;
+ float: right;
 }
 </style>>
 

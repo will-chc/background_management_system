@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HomeSideBar from '@/components/HomeSideBar1.vue';
+import HomeSideBar from '@/components/HomeSideBar.vue';
 import HomeHeader from '@/components/HomeHeader.vue';
 
 //引入sidebar组件
