@@ -4,9 +4,17 @@
       <h2>登录页面</h2>
       <div class="form-item">
         <span class="svg-container"><i class="el-icon-user-solid"></i></span>
-        <input class="form-input" v-model="username" type="text" />
+        <!-- username -->
+        <input class="form-input" 
+         v-model="username"
+         @blur="checkName" 
+         type="text" />
         <span class="form-item-end"></span>
       </div>
+      <div v-show="u_falg"
+          @blur="checkName" 
+          class="form-item-erro">用户名格式出错</div>
+       <!-- password -->
       <div class="form-item">
         <span class="svg-container"><i class="el-icon-lock"></i></span>
         <input
@@ -30,14 +38,25 @@ export default {
   data() {
     return {
       username: "",
+      u_falg:false,
       password: "",
+     
       viewable: false,
-    };
+    }
   },
   methods: {
     //显示密码
     showpassword() {
       this.viewable = !this.viewable;
+    },
+    // 用户名合法验证
+    checkName(){
+      if(this.username.length<3||this.username.length>10){
+          this.u_falg = true;
+      }
+      else{
+          this.u_falg = false
+      }
     },
     login(){
       //检验账号和密码
@@ -116,5 +135,12 @@ h2 {
   border-radius: 8px;
   border: 0;
   font-size: 18px;
+}
+.form-item-erro{
+  color: #ff4949;
+  font-size: 12px;
+  line-height: 1px;
+  position: absolute;
+  top: 49%;
 }
 </style>

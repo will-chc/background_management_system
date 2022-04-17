@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <Login v-if="!$store.state.islogin"></Login>
-    
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from './pages/Login'
 export default {
   name: 'App',
-  components: {
-   Login
+  mounted(){
+    //挂载时，跳转路由到登录页面
+    this.$router.replace({
+      name:'login',
+    })
   }
 }
 </script>

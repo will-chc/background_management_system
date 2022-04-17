@@ -13,14 +13,18 @@ import App from './App.vue'
 
 
 //按需引入element ui
-
 import {Form,Icon,Input,FormItem} from 'element-ui'
-
+import {Aside,Menu,Submenu,MenuItemGroup,MenuItem} from 'element-ui'
 
 Vue.component(Icon.name,Icon);
 Vue.component(FormItem.name,FormItem);
 Vue.component(Input.name,Input);
 Vue.component(Form.name,Form);
+Vue.component(Aside.name,Aside);
+Vue.component(Menu.name,Menu);
+Vue.component(Submenu.name,Submenu);
+Vue.component(MenuItemGroup.name,MenuItemGroup);
+Vue.component(MenuItem.name,MenuItem);
 
 
 Vue.config.productionTip =false;
@@ -37,5 +41,10 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router:router,//路由器
-  store
+  store,
+  beforeCreate() {
+    //安装全局事件总线
+    Vue.prototype.$bus = this
+},
+  
 }).$mount('#app')
