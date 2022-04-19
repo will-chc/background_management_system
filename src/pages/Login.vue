@@ -60,11 +60,11 @@ export default {
     },
     login(){
       //检验账号和密码
-      this.$store.dispatch("loginCheck",true)
+      this.$store.dispatch("user_Login/loginCheck",this.password)
       
       //跳转路由
       this.$router.replace({
-        name:'home',
+        name:'page',
         params:{
           usernaem:this.username,
         }

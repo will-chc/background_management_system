@@ -4,6 +4,7 @@
   </div>
 </template>
 
+111
 <script>
 export default {
   name: 'App',
@@ -11,7 +12,7 @@ export default {
     //挂载时，跳转路由到登录页面
     this.$router.replace({
       name:'login',
-    })
+    });
   }
 }
 </script>

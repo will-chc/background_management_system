@@ -27,6 +27,7 @@ export default {
         {
           title: "首页",
           index:nanoid(),
+          router:"/page",
            //是否有二级导航
           isSecond: false,
           second: [],
@@ -35,6 +36,7 @@ export default {
         // 文档
         {
           title: "文档",
+          router:"/document",
           index:nanoid(),
           //是否有二级导航
           isSecond: false,
@@ -45,6 +47,7 @@ export default {
         // 引导页
         {
           title: "引导页",
+          router:"/guide",
           index:nanoid(),
           //是否有二级导航
           isSecond: false,
@@ -56,22 +59,26 @@ export default {
         {
           title: "权限测试页",
           index:nanoid(),
+          router:"",
           //是否有二级导航
           isSecond: true,
           second: [
             {
               title:"页面权限",
+              router:"/permission/pages",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },
             {
               title:"指令权限",
+              router:"/permission/directive",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },{
               title:"角色权限",
+              router:"/permission/role",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
@@ -82,6 +89,7 @@ export default {
         // 图标
         {
           title: "图标",
+          router:"/icon",
           index:nanoid(),
           //是否有二级导航
           isSecond: false,
@@ -92,23 +100,27 @@ export default {
         //组件
         {
           title: "组件",
+          router:"",
           index:nanoid(),
           //是否有二级导航
           isSecond: true,
           second: [
             {
               title:"选项1",
+              router:"/components/first",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },
             {
               title:"选项2",
+              router:"/components/second",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },{
               title:"选项3",
+              router:"/components/third",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
@@ -120,22 +132,26 @@ export default {
         {
           title: "图表",
           index:nanoid(),
+          router:"",
           //是否有二级导航
           isSecond: true,
           second: [
             {
-              title:"选项1",
+              title:"表1",
+              router:"/charts/Tableone",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },
             {
-              title:"选项2",
+              title:"表2",
+              router:"/charts/Tabletwo",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
             },{
-              title:"选项3",
+              title:"表3",
+              router:"/charts/TableThird",
               index:nanoid(),
                //是否有二级导航
               isSecond: false,
@@ -146,18 +162,22 @@ export default {
         //路由嵌套
          {
           title: "路由嵌套",
+          router:'',
           //是否有二级导航
           index:nanoid(),
           isSecond: true,
           second: [
             {
               title: "菜单1", 
+              router:'/router/Menu1',
+
               index:nanoid(),
               //是否有二级导航
               isSecond: true,
               second:[
                  {
                 title: "菜单1-1", 
+                router:'/router/Menu1/one',
                 index:nanoid(),
                 //是否有二级导航
                 isSecond: false,

@@ -1,6 +1,7 @@
 <template>
-  <span class="tag-view-item" :class="currentClass">
-      <span>{{title}}</span>
+  <span @click="shiftRoute" class="tag-view-item" :class="currentClass">
+      <span>{{tag.title}}</span> 
+      <span @click="closeTag" v-if="closeBtn" class="closeButton"><i class="el-icon-error"></i></span>
   </span>
 </template>
 
@@ -9,19 +10,31 @@ export default {
     naem:"Tag",
     data() {
         return {
-            title:"首页",
-            current:true,
+            
         }
     },
     computed:{
         currentClass(){
-            if(this.current){
+            if(this.tag.current){
                 return "tag-current"
             }else{
                 return ""
             }
         }
-    }
+    },
+    methods:{
+        closeTag(){
+            this.$bus.$emit("closeTag",this.tag)
+        },
+        //点击Tag 切换路由
+        shiftRoute(){
+            //切换路由
+            this.$router.push({
+                name:this.tag.routerName
+            })
+        }
+    },
+    props:["tag","closeBtn"]
 }
 </script>
 
@@ -48,6 +61,9 @@ export default {
     height:8px;
     border-radius: 50%;
     display: inline-block;
+    margin: 0 4px;
+}
+.closeButton{
     margin: 0 4px;
 }
 </style>

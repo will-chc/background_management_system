@@ -2,7 +2,7 @@
   <el-dropdown trigger="click" class="avartar-container">
     <div class="el-dropdown-link">
       <div class="user-avartar">
-        <img src="../assets/f778738c-e4f8-4870-b634-56703b4acafe.gif" alt="" />
+        <img src="../../assets/f778738c-e4f8-4870-b634-56703b4acafe.gif" alt="" />
       </div>
       <i class="el-icon-caret-bottom"></i>
     </div>

@@ -4,13 +4,14 @@
     
     <div class="home-content">
         <home-header></home-header>
+        <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import HomeSideBar from '@/components/HomeSideBar.vue';
-import HomeHeader from '@/components/HomeHeader.vue';
+import HomeSideBar from '@/components/Siderbar/HomeSideBar.vue';
+import HomeHeader from '@/components/Header/HomeHeader.vue';
 
 //引入sidebar组件
 

@@ -3,7 +3,7 @@ import Vue from 'vue'
 //引入路由插件
 import VueRouter from 'vue-router'
 //引入路由器
-import router from './router/main'
+import {router,getIntance} from './router/main'
 
 //引入axios库
 // import axios from 'axios'
@@ -50,7 +50,9 @@ new Vue({
   store,
   beforeCreate() {
     //安装全局事件总线
-    Vue.prototype.$bus = this
+    Vue.prototype.$bus = this;
+    getIntance(this);
+    
 },
   
 }).$mount('#app')
