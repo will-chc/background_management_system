@@ -1,9 +1,8 @@
 <template>
   <div class="home-container">
-    <home-side-bar></home-side-bar>
-    
+    <HomeSideBar></HomeSideBar>
     <div class="home-content">
-        <home-header></home-header>
+        <HomeHeader></HomeHeader>
         <router-view></router-view>
     </div>
   </div>
@@ -32,10 +31,11 @@ export default {
   width: 210px;
   min-width: 100%;
   height: 100%;
+  height: 100vh;
 }
 .home-content {
   flex: 1;
-  background-color: skyblue;
+  
 }
 
 

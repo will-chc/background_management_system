@@ -136,5 +136,9 @@ export default {
 .right-menu {
  float: right;
 }
+.tag-view{
+   box-shadow: 0 0.0625rem 0.25rem rgb(0 21 41 / 8%);
+   overflow: auto;
+}
 </style>>
 

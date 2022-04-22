@@ -41,4 +41,13 @@ export default {
 </script>
 
 <style>
+.el-submenu,.el-menu-item,.el-submenu__title{
+  color: #fff!important;
+}
+.el-submenu:hover,.el-menu-item:hover,.el-submenu__title:hover{
+  color: #000!important;
+}
+.el-menu-item.is-active {
+    color: #409EFF!important;
+}
 </style>

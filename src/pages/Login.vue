@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "Login",
   data() {
@@ -40,7 +41,6 @@ export default {
       username: "",
       u_falg:false,
       password: "",
-     
       viewable: false,
     }
   },
@@ -58,19 +58,35 @@ export default {
           this.u_falg = false
       }
     },
-    login(){
+    async login(){
       //检验账号和密码
-      this.$store.dispatch("user_Login/loginCheck",this.password)
-      
+      let user = {
+          username:this.username,
+          password:this.password,
+      }
+
+      // 发送请求获取登录信息
+      await axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8000/user',
+                params: user
+            }).then((res) => {
+                this.$store.commit("user_Login/SetToken", res.data);
+            })
+
       //跳转路由
-      this.$router.replace({
-        name:'page',
-        params:{
-          usernaem:this.username,
-        }
+      this.$router.push({
+        name:'page'
       })
     }
   },
+  mounted(){
+    if(localStorage.token==="login"){
+      this.$router.replace({
+        name:"page"
+      })
+    }
+  }
 };
 </script>
 

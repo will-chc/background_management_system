@@ -1,6 +1,6 @@
 <template>
   <div class="home-slidebar" :class="collapsesWidth">
-    <el-aside width="100%" style="background-color: rgb(238, 241, 246)">
+    <el-aside width="100%">
       <el-menu :collapse="isCollapse">
         <SiderBarItem 
         v-for=" (i,index) of nav" 
@@ -309,19 +309,25 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .home-slidebar {
   width: 200px;
-  background-color: #fff;
+  background-color: rgb(48, 65, 86);
   overflow: auto;
 }
+
 .el-menu {
   border: 0px;
 }
 .el-aside {
   overflow: visible;
 }
+
 .collapsesWidth{
   width: 64px!important;
 }
+.el-menu,.el-aside{
+  background-color: rgb(48, 65, 86)!important;
+}
+
 </style>
