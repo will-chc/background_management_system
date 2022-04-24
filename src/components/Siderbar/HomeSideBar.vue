@@ -301,6 +301,7 @@ export default {
   mounted() {
     //绑定事件监听导航栏是否收缩
     this.$bus.$on("isCollapse", this.hiddenAside);
+    // console.log(this.$router.routes);
   },
   beforeDestroy() {
     //解绑事件监听导航栏是否收缩

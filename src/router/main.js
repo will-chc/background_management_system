@@ -21,7 +21,7 @@ const router = new VueRouter({
                     name: 'page',
                     path: '/page',
                     component: (resolve) => { require(['@//components/404/NotFound'], resolve) },
-                    meta: { title: "首页" },
+                    meta: { title: "首页" ,icon:"el-icon-menu"},
 
                 },
                 //document 文档
@@ -29,7 +29,7 @@ const router = new VueRouter({
                     name: 'document',
                     path: '/document',
                     component: (resolve) => { require(['@//components/Document/Document'], resolve) },
-                    meta: { title: "文档" },
+                    meta: { title: "文档",icon:"el-icon-notebook-1" },
 
                 },
                 // guide 引导页
@@ -37,7 +37,7 @@ const router = new VueRouter({
                     name: 'guide',
                     path: '/guide',
                     component: Guide,
-                    meta: { title: "引导页" },
+                    meta: { title: "引导页" , icon:"el-icon-s-help"},
 
                 },
                 // permission 权限测试
