@@ -11,13 +11,40 @@ import {router,getIntance} from './router/main'
 
 import App from './App.vue'
 
+//引入svg-icon
+import '@/icons'
 
 //按需引入element ui
 import {Form,Icon,Input,FormItem} from 'element-ui'
 import {Aside,Menu,Submenu,MenuItemGroup,MenuItem} from 'element-ui'
+import {Tabs,TabPane} from 'element-ui'
 import {Dropdown,DropdownMenu,DropdownItem,Button} from 'element-ui'
+import { Message } from 'element-ui';
+import {Tooltip} from 'element-ui'
+import {Table} from 'element-ui'
+import {TableColumn} from 'element-ui'
+import {Popover} from 'element-ui'
+import {Tag} from 'element-ui'
+import {Pagination,Card} from 'element-ui'
 
 
+
+
+
+//引入eleui 的方法
+//Table
+Vue.component(Table.name,Table);
+Vue.component(TableColumn.name,TableColumn);
+Vue.component(Popover.name,Popover);
+Vue.component(Tag.name,Tag);
+Vue.component(Pagination.name,Pagination);
+Vue.component(Card.name,Card);
+
+
+Vue.prototype.$message = Message;
+Vue.component(Tooltip.name,Tooltip);
+Vue.component(Tabs.name,Tabs);
+Vue.component(TabPane.name,TabPane);
 Vue.component(Icon.name,Icon);
 Vue.component(FormItem.name,FormItem);
 Vue.component(Input.name,Input);
@@ -31,6 +58,7 @@ Vue.component(DropdownMenu.name,DropdownMenu);
 Vue.component(DropdownItem.name,DropdownItem);
 Vue.component(Button.name,Button);
 Vue.component(Dropdown.name,Dropdown);
+
 
 
 Vue.config.productionTip =false;

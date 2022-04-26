@@ -6,9 +6,12 @@
 export default {
   name:"Guide",
   methods: {
+   
     add(){
-      this.$router.addRouter
+       
+      
     }
+   
   },
  
 }

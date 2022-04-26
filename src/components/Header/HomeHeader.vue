@@ -35,7 +35,7 @@ export default {
         {
           title:"首页",
           current:true,
-          routerName:"page"
+          routepath:"/home"
         }
         ,
         
@@ -81,17 +81,16 @@ export default {
 
     //关闭Tag
     closeTag(data){
-      //从taglist 中移除tag
-      console.log(data);
+        //从taglist 中移除tag
         this.taglist = this.taglist.filter(item=>{
-          console.log(item.title!==data.title);
+        
              return item.title!=data.title
         })
-        console.log(this.taglist);
-      // 切换路由
+         // 切换路由
       this.$router.push({
-        name:this.taglist[this.taglist.length-1].routerName
+        path:this.taglist[this.taglist.length-1].routepath
       })
+     
     }
   },
   //挂载
@@ -117,6 +116,7 @@ export default {
   width: 100%;
   height: 80px;
   background-color: #fff;
+  border-bottom: 1px solid #ccc;
 }
 .navbar {
   height: 50px;

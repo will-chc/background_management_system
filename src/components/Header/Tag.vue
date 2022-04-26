@@ -7,12 +7,7 @@
 
 <script>
 export default {
-    naem:"Tag",
-    data() {
-        return {
-            
-        }
-    },
+    name:"Tag",
     computed:{
         currentClass(){
             if(this.tag.current){
@@ -30,7 +25,7 @@ export default {
         shiftRoute(){
             //切换路由
             this.$router.push({
-                name:this.tag.routerName
+                path:this.tag.routepath
             })
         }
     },

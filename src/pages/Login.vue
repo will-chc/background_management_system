@@ -74,6 +74,32 @@ export default {
                 this.$store.commit("user_Login/SetToken", res.data);
             })
 
+      //根据登录信息创建路由表存到vuex中
+    this.$store.commit("asyncRoutes/AddRoutes", this.$router.options.routes);
+
+    if (localStorage.token == "admin") {
+      //配置动态路由
+      this.$router.addRoute("permission", {
+        path: "/permission/admin",
+        component: (resolve) => {
+          require(["@/components/Icon/Icon"], resolve);
+        },
+        meta: { title: "admin权限" },
+      });
+      
+      // 添加到路由表
+      this.$router.options.routes.forEach((item) => {
+        if (item.name == "permission") {
+          item.children.push({
+            path: "/permission/admin",
+            component: (resolve) => {
+              require(["@/components/Icon/Icon"], resolve);
+            },
+            meta: { title: "admin权限" },
+          });
+        }
+      });
+    }
       //跳转路由
       this.$router.push({
         name:'page'

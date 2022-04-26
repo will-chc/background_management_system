@@ -20,7 +20,7 @@ export default {
     methods:{
         backTo(){
             this.$router.push({
-                name:'document'
+                path:'/document'
             })
         }
     }

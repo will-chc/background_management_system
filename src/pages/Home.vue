@@ -9,7 +9,9 @@
    
     <div class="home-content">
         <HomeHeader></HomeHeader>
+        <keep-alive>
         <router-view></router-view>
+        </keep-alive>
     </div>
   </div>
 </template>
@@ -19,6 +21,7 @@
 import HomeHeader from '@/components/Header/HomeHeader.vue';
 import Sidebar from '@/components/SideBar/Sidebar.vue';
 
+
 //引入sidebar组件
 
 export default {
@@ -26,8 +29,28 @@ export default {
   components:{
       // HomeSideBar,
       HomeHeader,
-    Sidebar
+    Sidebar,
+    Document
     },
+    created(){
+      if(localStorage.token=="admin"){
+        
+        let newRouteObj =
+         {
+         name: 'admin权限',
+         path: '/permission/a',
+         component: (resolve) => { require(['@//components/Document/Document'], resolve) },
+         meta: { title: "admin权限" },
+       }
+        this.$router.addRoute('permission',newRouteObj);
+
+       this.$router.options.routes[0].children.forEach(item=>{
+         if(item.name=="permission"){
+           item.children.push(newRouteObj)
+         }
+       })
+      }
+    }
     
 }
 </script>

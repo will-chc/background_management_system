@@ -1,12 +1,13 @@
 <template>
   <div class="menu-wrapper">
-    <template v-for="item of $router.options.routes[0].children">
+    <template v-for="item of $router.options.routes">
         <div
-            v-if="item.children != null && item.children.length > 0"
+            v-if="item.children != null && item.children.length > 1"
             :key="item.path"
           >
             <el-submenu :index="item.path" :key="item.path">
                 <template slot="title">
+                    <i :class="item.meta.icon"></i>
                     <span>{{ item.meta.title }}</span>
                 </template>
                 <template v-for="child of item.children">
@@ -48,6 +49,7 @@
                             :to="item.path"
                             :key="item.path" >
                             <el-menu-item :index="item.path">
+                                 <i :class="item.meta.icon"></i>
                                 <span>{{item.meta.title}}</span>
                             </el-menu-item>
                         </router-link>
