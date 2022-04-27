@@ -5,16 +5,18 @@
       <div class="form-item">
         <span class="svg-container"><i class="el-icon-user-solid"></i></span>
         <!-- username -->
-        <input class="form-input" 
-         v-model="username"
-         @blur="checkName" 
-         type="text" />
+        <input
+          class="form-input"
+          v-model="username"
+          @blur="checkName"
+          type="text"
+        />
         <span class="form-item-end"></span>
       </div>
-      <div v-show="u_falg"
-          @blur="checkName" 
-          class="form-item-erro">用户名格式出错</div>
-       <!-- password -->
+      <div v-show="u_falg" @blur="checkName" class="form-item-erro">
+        用户名格式出错
+      </div>
+      <!-- password -->
       <div class="form-item">
         <span class="svg-container"><i class="el-icon-lock"></i></span>
         <input
@@ -26,23 +28,23 @@
           ><i class="el-icon-view"></i
         ></span>
       </div>
-      <button class="form-button" @click='login'>登录</button>
+      <button class="form-button" type="button" @click="login">登录</button>
     </form>
     <iframe src="" frameborder="0" name="frameName"></iframe>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Login",
   data() {
     return {
       username: "",
-      u_falg:false,
+      u_falg: false,
       password: "",
       viewable: false,
-    }
+    };
   },
   methods: {
     //显示密码
@@ -50,69 +52,72 @@ export default {
       this.viewable = !this.viewable;
     },
     // 用户名合法验证
-    checkName(){
-      if(this.username.length<3||this.username.length>10){
-          this.u_falg = true;
-      }
-      else{
-          this.u_falg = false
+    checkName() {
+      if (this.username.length < 3 || this.username.length > 10) {
+        this.u_falg = true;
+      } else {
+        this.u_falg = false;
       }
     },
-    async login(){
+    addasyncRoutes() {
+      if (localStorage.token == "admin") {
+        //配置动态路由
+        this.$router.addRoute("permission", {
+          path: "/permission/admin",
+          component: (resolve) => {
+            require(["@/components/Icon/Icon"], resolve);
+          },
+          meta: { title: "admin权限" },
+        });
+
+        // 添加到路由表
+        this.$router.options.routes.forEach((item) => {
+          if (item.name == "permission") {
+            item.children.push({
+              path: "/permission/admin",
+              component: (resolve) => {
+                require(["@/components/Icon/Icon"], resolve);
+              },
+              meta: { title: "admin权限" },
+            });
+          }
+        });
+        //根据登录信息创建路由表存到vuex中
+        this.$store.commit(
+          "asyncRoutes/AddRoutes",
+          this.$router.options.routes
+        );
+      }
+    },
+    async login() {
       //检验账号和密码
       let user = {
-          username:this.username,
-          password:this.password,
-      }
+        username: this.username,
+        password: this.password,
+      };
 
       // 发送请求获取登录信息
       await axios({
-                method: 'GET',
-                url: 'http://127.0.0.1:8000/user',
-                params: user
-            }).then((res) => {
-                this.$store.commit("user_Login/SetToken", res.data);
-            })
-
-      //根据登录信息创建路由表存到vuex中
-    this.$store.commit("asyncRoutes/AddRoutes", this.$router.options.routes);
-
-    if (localStorage.token == "admin") {
-      //配置动态路由
-      this.$router.addRoute("permission", {
-        path: "/permission/admin",
-        component: (resolve) => {
-          require(["@/components/Icon/Icon"], resolve);
-        },
-        meta: { title: "admin权限" },
+        method: "GET",
+        url: "http://127.0.0.1:8000/user",
+        params: user,
+      }).then((res) => {
+        this.$store.commit("user_Login/SetToken", res.data);
       });
-      
-      // 添加到路由表
-      this.$router.options.routes.forEach((item) => {
-        if (item.name == "permission") {
-          item.children.push({
-            path: "/permission/admin",
-            component: (resolve) => {
-              require(["@/components/Icon/Icon"], resolve);
-            },
-            meta: { title: "admin权限" },
-          });
-        }
-      });
-    }
+      this.addasyncRoutes();
       //跳转路由
       this.$router.push({
-        name:'page'
-      })
+        path: "/home",
+      });
+    },
+  },
+  mounted() {
+    if (localStorage.token === "login" || localStorage.token === "admin") {
+      this.$router.replace({
+        path: "/home",
+      });
     }
   },
-  mounted(){
-    if(localStorage.token==="login"){
-      this.$router.replace({
-        name:"page"
-      })
-    }
-  }
 };
 </script>
 
@@ -178,7 +183,7 @@ h2 {
   border: 0;
   font-size: 18px;
 }
-.form-item-erro{
+.form-item-erro {
   color: #ff4949;
   font-size: 12px;
   line-height: 1px;

@@ -35,7 +35,6 @@ const asyncRoutes = {
     namespaced:true,
     state:{
         routes:[       
-
         ]
     },
     mutations: {
@@ -46,10 +45,25 @@ const asyncRoutes = {
    
 }
 
+// 导航栏折叠
+const menuCollapse = {
+    namespaced:true,
+    state:{
+        isCollapse:false
+    },
+    mutations:{
+        //改变isCollapse
+        Collapse(state,value){
+            state.isCollapse = value;
+        },
+    }
+}
+
 // 创建并暴露store
 export default new Vuex.Store({
     modules: {
         user_Login,
-        asyncRoutes
+        asyncRoutes,
+        menuCollapse,
     }
 });

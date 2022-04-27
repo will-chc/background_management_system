@@ -15,6 +15,7 @@ export default {
     this.$router.replace({
       path:'/home'
     });
+    
   },
 };
 </script>

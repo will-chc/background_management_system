@@ -1,7 +1,6 @@
 <template>
   <div class="home-container">
-    <div class="side-container">
-       <!-- <HomeSideBar></HomeSideBar> -->
+    <div class="side-container" :class="$store.state.menuCollapse.isCollapse?'collapse':''">
     <el-aside>
       <Sidebar></Sidebar>
     </el-aside>
@@ -17,7 +16,7 @@
 </template>
 
 <script>
-// import HomeSideBar from '@/components/Siderbar/HomeSideBar.vue';
+
 import HomeHeader from '@/components/Header/HomeHeader.vue';
 import Sidebar from '@/components/SideBar/Sidebar.vue';
 
@@ -27,8 +26,7 @@ import Sidebar from '@/components/SideBar/Sidebar.vue';
 export default {
   name: "Home",
   components:{
-      // HomeSideBar,
-      HomeHeader,
+    HomeHeader,
     Sidebar,
     Document
     },
@@ -59,16 +57,19 @@ export default {
 .home-container {
   display: flex;
   position: absolute;
-  width: 210px;
   min-width: 100%;
   height: 100%;
   height: 100vh;
 }
 .side-container{
   width: 210px;
+  overflow: auto;
+}
+.collapse{
+  width: 64px;
 }
 .el-aside{
-  width: 210px!important;
+  width: 100%!important;
 }
 .home-content {
   flex: 1;

@@ -1,6 +1,7 @@
 <template>
     <el-menu 
-    mode="vertical"
+     mode="vertical"
+     :collapse="$store.state.menuCollapse.isCollapse"
     style="width='200px'"
     >
     <SidebarItem></SidebarItem>
@@ -12,7 +13,7 @@ import SidebarItem from './SidebarItem.vue'
 
 export default {
   components: { SidebarItem },
-    name:'Sidebar'
+    name:'Sidebar',
 }
 </script>
 

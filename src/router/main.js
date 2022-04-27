@@ -193,6 +193,14 @@ const router = new VueRouter({
                     meta: { title: "表3" },
 
                 },
+                 // TableThird 图表\表3
+                 {
+                    name: 'TableThird11',
+                    path: '/charts/TableThird1',
+                    component: Guide,
+                    meta: { title: "表4" },
+
+                },
             ]
         },
         //Login
