@@ -18,5 +18,7 @@ export default {
 </script>
 
 <style>
-
+.el-aside,.el-menu{
+  background-color: rgb(48, 65, 86);
+}
 </style>

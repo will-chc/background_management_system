@@ -26,6 +26,10 @@ const user_Login = {
         DelToken(state, token) {
             state.token = "";
             localStorage.removeItem('token');
+        },
+        ShiftRole(state,value){
+            state.token = value;
+            localStorage.token = value;
         }
     }
 }
@@ -58,6 +62,7 @@ const menuCollapse = {
         },
     }
 }
+
 
 // 创建并暴露store
 export default new Vuex.Store({

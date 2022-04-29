@@ -81,4 +81,7 @@ export default {
    .el-aside{
        overflow: hidden;
    }
+   .el-menu-item,.el-submenu__title {
+       color: #fff;
+   }
 </style>

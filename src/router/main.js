@@ -87,7 +87,7 @@ const router = new VueRouter({
                 // directive 权限测试\指令权限
                 {
                     path: '/permission/directive',
-                    component: Guide,
+                    component: (resolve) => { require(['@/components/Permission/Directive'], resolve) },
                     meta: { title: "指令权限" },
 
                 },
