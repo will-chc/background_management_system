@@ -45,7 +45,7 @@
           </div>
           <div v-else :key="item.path">
                          <router-link
-                            v-if="item.path!=null&&item.path!=''"
+                            v-if="item.path!=null&&item.path!=''&&item.path!='/login'"
                             :to="item.path"
                             :key="item.path" >
                             <el-menu-item :index="item.path">

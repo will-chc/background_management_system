@@ -27,6 +27,8 @@ import {Popover} from 'element-ui'
 import {Tag} from 'element-ui'
 import {Pagination,Card} from 'element-ui'
 import {RadioGroup,RadioButton} from 'element-ui'
+import {Dialog} from 'element-ui'
+import {Alert} from 'element-ui'
 
 
 
@@ -42,6 +44,8 @@ Vue.component(Pagination.name,Pagination);
 Vue.component(Card.name,Card);
 Vue.component(RadioGroup.name,RadioGroup);
 Vue.component(RadioButton.name,RadioButton);
+Vue.component(Dialog.name,Dialog);
+Vue.component(Alert.name,Alert);
 
 
 Vue.prototype.$message = Message;

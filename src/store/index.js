@@ -63,6 +63,89 @@ const menuCollapse = {
     }
 }
 
+//图书表格数据
+const bookTable = {
+    namespaced:true,
+    state:{
+        tableList :[
+            {
+                id: 1,
+                date: "2016-05-02",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              
+              },
+              {
+                id: 2,
+                date: "2016-05-04",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 3,
+                date: "2016-05-01",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 4,
+                date: "2016-05-03",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 5,
+                date: "2016-05-02",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 6,
+                date: "2016-05-04",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 7,
+                date: "2016-05-01",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              },
+              {
+                id: 8,
+                date: "2016-05-03",
+                title: "jklasdjfkljdaskf2113",
+                author:'王小虎',
+              }
+        ]
+    },
+    mutations:{
+        ModifyTable(state,value){
+            state.tableList.forEach(element => {
+                if(element.id == value.id){
+                    Object.assign(element,value);
+                }
+            });
+        },
+        AddTableElement(state,value){
+            console.log(state.tableList[0]);
+            state.tableList.unshift(value);
+            console.log(state.tableList[0]);
+
+        },
+        DeleteElement(state,value){
+            let i =0
+           state.tableList.forEach(ele=>{
+               if(ele.id ===value.id){
+                    state.tableList.splice(i,1);
+               }
+               i++;
+           })
+        }
+        
+    }
+}
+
 
 // 创建并暴露store
 export default new Vuex.Store({
@@ -70,5 +153,6 @@ export default new Vuex.Store({
         user_Login,
         asyncRoutes,
         menuCollapse,
+        bookTable,
     }
 });

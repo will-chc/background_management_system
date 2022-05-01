@@ -64,6 +64,8 @@ export default {
 .side-container{
   width: 210px;
   overflow: auto;
+   background-color: rgb(48, 65, 86);
+
 }
 .collapse{
   width: 64px;
