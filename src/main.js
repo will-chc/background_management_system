@@ -29,6 +29,7 @@ import {Pagination,Card} from 'element-ui'
 import {RadioGroup,RadioButton} from 'element-ui'
 import {Dialog} from 'element-ui'
 import {Alert} from 'element-ui'
+import {Upload} from 'element-ui'
 
 
 
@@ -46,6 +47,7 @@ Vue.component(RadioGroup.name,RadioGroup);
 Vue.component(RadioButton.name,RadioButton);
 Vue.component(Dialog.name,Dialog);
 Vue.component(Alert.name,Alert);
+Vue.component(Upload.name,Upload);
 
 
 Vue.prototype.$message = Message;

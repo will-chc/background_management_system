@@ -148,18 +148,18 @@ const router = new VueRouter({
             children: [
                 // first 组件\选项1
                 {
-                    name: 'first',
-                    path: '/components/first',
-                    component: Guide,
-                    meta: { title: "选项1" },
+                    name: 'upload',
+                    path: '/components/upload',
+                    component: (resolve) => { require(['@/components/Upload'], resolve) },
+                    meta: { title: "上传头像" },
 
                 },
                 // second 组件\选项2
                 {
-                    name: 'second',
-                    path: '/components/second',
-                    component: Guide,
-                    meta: { title: "选项2" },
+                    name: 'download',
+                    path: '/components/download',
+                    component: (resolve) => { require(['@/components/DownLoad'], resolve) },
+                    meta: { title: "下载文件" },
 
                 },
                 // third 组件\选项3
