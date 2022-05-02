@@ -54,7 +54,7 @@ export default {
               item ===file.uid
           });
           this.imgUrl.splice(index,1);
-          this.$emit('delUrl',this.imgUrl);
+          // this.$emit('delUrl',this.imgUrl);
           if(this.fileList.length<this.limit){
               this.showUpload = false
           }

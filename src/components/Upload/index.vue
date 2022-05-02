@@ -8,7 +8,6 @@
           @getUrl="getUrl($event)"
           @delUrl="delUrl($event)"
           :disabled="false"
-          
         ></UpLoadImg>
       </el-form-item>
     </el-form>

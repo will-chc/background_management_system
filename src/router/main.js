@@ -164,10 +164,10 @@ const router = new VueRouter({
                 },
                 // third 组件\选项3
                 {
-                    name: 'third',
-                    path: '/components/third',
-                    component: Guide,
-                    meta: { title: "选项3" },
+                    name: 'tinymce',
+                    path: '/components/tinymce',
+                    component: (resolve) => { require(['@/components/QuillEditor'], resolve) },
+                    meta: { title: "富文本" },
 
                 },
             ]
