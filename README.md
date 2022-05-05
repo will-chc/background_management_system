@@ -28,9 +28,9 @@
 > 
 > ---
 > 
-> ![](C:\Users\wave\AppData\Roaming\marktext\images\2022-05-05-22-55-33-1651762425(1).png)
+> 
 
-<img src="file:///C:/Users/wave/AppData/Roaming/marktext/images/2022-05-05-22-57-16-1651762618(1).png" title="" alt="" width="666">
+
 
 ## 侧边栏
 
