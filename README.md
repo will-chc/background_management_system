@@ -1,3 +1,5 @@
+
+
 # background_management_system
 
 #### 介绍
@@ -206,6 +208,4 @@
 > 
 > - 引入md文件 
 
-![Image text](C:\Users\wave\Desktop\vue\test\background_management_system\src\assets\demo1.png)
-
-![Imagetext](C:\Users\wave\Desktop\vue\test\background_management_system\src\assets\demo2.png)
+![Imagetext](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo1.png)
