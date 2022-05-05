@@ -1,5 +1,3 @@
-
-
 # background_management_system
 
 #### 介绍
@@ -207,5 +205,5 @@
 > - 配置text-loader
 > 
 > - 引入md文件 
-
-![Imagetext](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo1.png)
+![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo1.png)
+![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo2.png)
