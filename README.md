@@ -27,10 +27,6 @@
 > - 将登录信息保存到localstorage中，使用路由守卫beforeEach判断登录状态，没有token数据则跳转回登录页面。
 > 
 > ---
-> 
-> 
-
-
 
 ## 侧边栏
 
@@ -209,3 +205,7 @@
 > - 配置text-loader
 > 
 > - 引入md文件 
+
+![Image text](C:\Users\wave\Desktop\vue\test\background_management_system\src\assets\demo1.png)
+
+![Imagetext](C:\Users\wave\Desktop\vue\test\background_management_system\src\assets\demo2.png)
