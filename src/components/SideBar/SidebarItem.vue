@@ -1,6 +1,6 @@
 <template>
   <div class="menu-wrapper">
-    <template v-for="item of $router.options.routes">
+    <template v-for="item of $store.state.asyncRoutes.routes">
         <div
             v-if="item.children != null && item.children.length > 1"
             :key="item.path"

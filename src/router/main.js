@@ -24,7 +24,7 @@ const router = new VueRouter({
                 {
                     name: 'page',
                     path: '/home',
-                    component: (resolve) => { require(['@//components/404/NotFound'], resolve) },
+                    component: (resolve) => { require(['@//components/Explain'], resolve) },
                     meta: { title: "首页"},
 
                 },
@@ -83,7 +83,6 @@ const router = new VueRouter({
                 // pages 权限测试\页面权限
                 { 
                     path: '/permission/pages',
-                    component: Guide,
                     meta: { title: "页面权限" },
 
                 },
@@ -94,51 +93,16 @@ const router = new VueRouter({
                     meta: { title: "指令权限" },
 
                 },
-                // role 权限测试\角色权限
-                {
-                    path: '/permission/role',
-                    component: (resolve) => { require(['@/components/Table/EditItem'], resolve) },
-                    meta: { title: "角色权限" },
-                },
+                // // role 权限测试\角色权限
+                // {
+                //     path: '/permission/role',
+                //     component: (resolve) => { require(['@/components/Table/EditItem'], resolve) },
+                //     meta: { title: "角色权限" },
+                // },
             ]
         },
          //路由嵌套
          nestedRoute,
-
-        // {
-        //     name: 'router',
-        //     path: "/router",
-        //     component: (resolve) => { require(['@/pages/Home'], resolve) },
-        //     meta: { title: '路由嵌套',icon:"el-icon-files" },
-        //     children: [
-        //         // Menu1 路由嵌套\菜单1
-        //         {
-        //             name: 'Menu1',
-        //             path: '/router/Menu1',
-        //             component: (resolve) => { require(['@/components/nest/RouteNest'], resolve) },
-        //             meta: { title: "菜单1" },
-        //             children: [
-        //                 {
-        //                     path: '/one',
-        //                     meta: { title: "菜单1-1" },
-        //                 }
-        //             ]
-
-        //         },
-        //         {
-        //             path:'/router/menu2',
-        //             component:Guide,
-        //             meta:{title:'菜单2'},
-        //             children:[
-        //                 {
-        //                     path:'/router/menu2/two',
-        //                     component: (resolve) => { require(['@/components/Permission/Directive'], resolve) },
-        //                     meta:{title:'菜单2-1'},
-        //                 }
-        //             ]
-        //         }
-        //     ]
-        // },
            //  components 组件
         {
             name: 'components',

@@ -65,6 +65,7 @@ export default {
           }
         });
       }
+      localStorage.setItem('taglist',JSON.stringify(this.taglist));
     },
 
     //关闭Tag
@@ -81,6 +82,10 @@ export default {
   },
   //挂载
   mounted() {
+    //从localStorage中获取taglis
+    if(localStorage.taglist){
+        this.taglist = JSON.parse(localStorage.taglist)
+    }
     //全局事件通信
     // 通过路由守卫获取打开的Tag页面数组
     this.$bus.$on("getTaglist", this.getTaglist);

@@ -2,7 +2,7 @@ import Vue from 'vue'
 //引入vuex
 import Vuex from 'vuex'
 
-
+import booklist from './booklist'
 
 //使用vuex插件
 Vue.use(Vuex);
@@ -39,12 +39,27 @@ const asyncRoutes = {
     namespaced:true,
     state:{
         routes:[       
-        ]
+        ],
+        asyncRoute:{
+
+        }
     },
     mutations: {
-        AddRoutes(state,value){
+        InitRoutes(state,value){
             state.routes = value;
-        }
+        },
+        AddRoutes(state,value){
+            state.routes.forEach(item=>{
+                if(item.name=='permission'){
+                    item.children.length = 2;
+                    item.children.push(value)
+                }
+            })
+        },
+        GetASyncRoute(state,value){
+            value.component = (resolve) => { require([`@/components/Permission/${localStorage.token}`], resolve) },
+            state.asyncRoute = value;
+        },
     }
    
 }
@@ -67,57 +82,7 @@ const menuCollapse = {
 const bookTable = {
     namespaced:true,
     state:{
-        tableList :[
-            {
-                id: 1,
-                date: "2016-05-02",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              
-              },
-              {
-                id: 2,
-                date: "2016-05-04",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 3,
-                date: "2016-05-01",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 4,
-                date: "2016-05-03",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 5,
-                date: "2016-05-02",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 6,
-                date: "2016-05-04",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 7,
-                date: "2016-05-01",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              },
-              {
-                id: 8,
-                date: "2016-05-03",
-                title: "jklasdjfkljdaskf2113",
-                author:'王小虎',
-              }
-        ]
+        tableList :booklist
     },
     mutations:{
         ModifyTable(state,value){

@@ -60,34 +60,11 @@ export default {
       }
     },
     addasyncRoutes() {
-      if (localStorage.token == "admin") {
         //配置动态路由
-        this.$router.addRoute("permission", {
-          path: "/permission/admin",
-          component: (resolve) => {
-            require(["@/components/Icon/Icon"], resolve);
-          },
-          meta: { title: "admin权限" },
-        });
-
+        this.$router.addRoute("permission",this.$store.state.asyncRoutes.asyncRoute);
         // 添加到路由表
-        this.$router.options.routes.forEach((item) => {
-          if (item.name == "permission") {
-            item.children.push({
-              path: "/permission/admin",
-              component: (resolve) => {
-                require(["@/components/Icon/Icon"], resolve);
-              },
-              meta: { title: "admin权限" },
-            });
-          }
-        });
-        //根据登录信息创建路由表存到vuex中
-        this.$store.commit(
-          "asyncRoutes/AddRoutes",
-          this.$router.options.routes
-        );
-      }
+        this.$store.commit('asyncRoutes/InitRoutes',this.$router.options.routes);
+        this.$store.commit('asyncRoutes/AddRoutes',this.$store.state.asyncRoutes.asyncRoute)
     },
     async login() {
       //检验账号和密码
@@ -102,7 +79,8 @@ export default {
         url: "http://127.0.0.1:8000/user",
         params: user,
       }).then((res) => {
-        this.$store.commit("user_Login/SetToken", res.data);
+        this.$store.commit("user_Login/SetToken", res.data.token);
+        this.$store.commit('asyncRoutes/GetASyncRoute',res.data.asyncRoutes)
       });
       this.addasyncRoutes();
       //跳转路由

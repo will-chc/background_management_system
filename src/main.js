@@ -72,6 +72,7 @@ Vue.component(Dropdown.name,Dropdown);
 
 Vue.config.productionTip =false;
 
+
 //使用路由插件
 Vue.use(VueRouter);
 
