@@ -37,7 +37,7 @@ export default {
          {
          name: 'admin权限',
          path: '/permission/a',
-         component: (resolve) => { require(['@//components/Document/Document'], resolve) },
+         component: (resolve) => { require(['@//components/Document'], resolve) },
          meta: { title: "admin权限" },
        }
         this.$router.addRoute('permission',newRouteObj);

@@ -1,6 +1,6 @@
 <template>
   <div class="menu-wrapper">
-    <template v-for="item of $store.state.asyncRoutes.routes">
+    <template v-for="item of routes ">
         <div
             v-if="item.children != null && item.children.length > 1"
             :key="item.path"
@@ -38,7 +38,6 @@
                                 <span>{{child.meta.title}}</span>
                             </el-menu-item>
                         </router-link>
-                        
                     </div>
                 </template>
             </el-submenu>
@@ -59,8 +58,15 @@
 </template>
 
 <script>
+import Global from "../../global/global"
+
 export default {
   name: "SidebarItem",
+  data() {
+      return {
+          routes:Global.antRouter
+      }
+  },
 
 };
 </script>

@@ -12,16 +12,15 @@ Vue.use(Vuex);
 const user_Login = {
     namespaced: true,
     state: {
-        token: localStorage.getItem("token") ? localStorage.getItem("token") : ""
+        role:""
     },
     //准备action，用于响应组件中的动作
     actions: {
         
     },
     mutations: {
-        SetToken(state, token) {
-            state.token = token;
-            localStorage.setItem("token", token);
+        getRole(state, role) {
+           state.role = role
         },
         DelToken(state, token) {
             state.token = "";

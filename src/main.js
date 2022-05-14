@@ -3,7 +3,9 @@ import Vue from 'vue'
 //引入路由插件
 import VueRouter from 'vue-router'
 //引入路由器
-import {router,getIntance} from './router/main'
+import router from './router'
+import Global from './global/global'
+import './premission'
 
 //引入axios库
 // import axios from 'axios'
@@ -35,7 +37,10 @@ import {Upload} from 'element-ui'
 
 
 
+
 //引入eleui 的方法
+Vue.prototype.$message = Message;
+
 //Table
 Vue.component(Table.name,Table);
 Vue.component(TableColumn.name,TableColumn);
@@ -48,9 +53,6 @@ Vue.component(RadioButton.name,RadioButton);
 Vue.component(Dialog.name,Dialog);
 Vue.component(Alert.name,Alert);
 Vue.component(Upload.name,Upload);
-
-
-Vue.prototype.$message = Message;
 Vue.component(Tooltip.name,Tooltip);
 Vue.component(Tabs.name,Tabs);
 Vue.component(TabPane.name,TabPane);
@@ -89,7 +91,7 @@ new Vue({
   beforeCreate() {
     //安装全局事件总线
     Vue.prototype.$bus = this;
-    getIntance(this);
+    
     
 },
   

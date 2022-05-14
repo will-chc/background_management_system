@@ -12,6 +12,7 @@
         :on-exceed="handleExceed"
         :on-preview="handlePictureCardPreview"
         :on-remove="handleRemove"
+        :on-success="handlesuccess"
         ref="upload"
         class="avatar-uploader"
         :class="{ hide: showUpload }"
@@ -68,6 +69,9 @@ export default {
     submitUpload(){
         // 调用submit方法
         this.$refs.upload.submit();
+    },
+    handlesuccess(res,f,fl){
+      console.log(res);
     },
     // 文件状态改变
     uploadFile(e,flieList){

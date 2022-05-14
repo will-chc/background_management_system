@@ -7,34 +7,23 @@
 </template>
 
 <script>
-import axios from "axios";
-
+import request from "./api/request";
 export default {
   name: "App",
   created() {
-    if (localStorage.token) {
-      //更新动态路由表
-      axios({
-        method: "GET",
-        url: "http://127.0.0.1:8000/asyncRoute",
-        params: {
-          user: `${localStorage.token}`,
-        },
-      }).then((res) => {
-        this.$store.commit("asyncRoutes/GetASyncRoute", res.data);
-        //配置动态路由
-        this.$router.addRoute("permission",this.$store.state.asyncRoutes.asyncRoute);
-        // 添加到路由表
-        this.$store.commit('asyncRoutes/InitRoutes',this.$router.options.routes);
-        this.$store.commit('asyncRoutes/AddRoutes',this.$store.state.asyncRoutes.asyncRoute)
-      });
-    }
+    let loginPage = {
+      name: "login",
+      path: "/login",
+      component: (resolve) => {
+        require(["@/pages/Login"], resolve);
+      },
+      meta: { title: "登录页面"},
+    };
+    this.$router.addRoute(loginPage);
+    //判断是否登录
+    this.isLogin();
   },
-  mounted() {
-    this.$router.replace({
-      path:'/login'
-    })
-  },
+
   provide() {
     return {
       reload: this.reload,
@@ -46,6 +35,20 @@ export default {
     };
   },
   methods: {
+    async isLogin() {
+      await request("/user", "GET").then((res) => {
+        console.log(res.status);
+        if (res.status === 200) {
+          //存储用户权限
+          this.$store.commit("user_Login/getRole", res.data.role);
+          this.$router.push("/");
+        } else {
+          this.$router.push({
+            path: "/login",
+          });
+        }
+      });
+    },
     reload() {
       this.isRouterView = false;
       this.$nextTick(() => {

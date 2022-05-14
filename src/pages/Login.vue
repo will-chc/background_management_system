@@ -36,6 +36,7 @@
 
 <script>
 import axios from "axios";
+import request from '../api/request'
 export default {
   name: "Login",
   data() {
@@ -67,25 +68,26 @@ export default {
         this.$store.commit('asyncRoutes/AddRoutes',this.$store.state.asyncRoutes.asyncRoute)
     },
     async login() {
-      //检验账号和密码
-      let user = {
-        username: this.username,
-        password: this.password,
-      };
-
+        let user = {
+          username:this.username,
+          password:this.password,
+        }
       // 发送请求获取登录信息
       await axios({
-        method: "GET",
+        method: "POST",
         url: "http://127.0.0.1:8000/user",
-        params: user,
+        data: user,
+        
       }).then((res) => {
-        this.$store.commit("user_Login/SetToken", res.data.token);
-        this.$store.commit('asyncRoutes/GetASyncRoute',res.data.asyncRoutes)
+        // this.$store.commit("user_Login/SetToken", res.data.token);
+        // this.$store.commit('asyncRoutes/GetASyncRoute',res.data.asyncRoutes)
       });
-      this.addasyncRoutes();
+       console.log(123);
+      // this.addasyncRoutes();
+     
       //跳转路由
       this.$router.push({
-        path: "/home",
+        name:'home'
       });
     },
   },
