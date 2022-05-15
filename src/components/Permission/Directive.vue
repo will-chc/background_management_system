@@ -1,13 +1,6 @@
 <template>
   <div class="directive-container">
-    <div class="title">你的权限是['{{ role }}'']</div>
-    <div class="shiftrole">
-      切换权限:
-      <el-radio-group v-model="role">
-        <el-radio-button label="login"></el-radio-button>
-        <el-radio-button label="admin"></el-radio-button>
-      </el-radio-group>
-    </div>
+    <div class="title">你的权限是<span class="tit_role">{{ role }}</span></div>
     <div class="look">
       <div class="role-item" style="margin-top: 30px">
         Only
@@ -16,14 +9,15 @@
       </div>
       <span class="tag">v-premisson="['{{ role }}']"]</span>
       <br />
-      <div
-        class="role-item"
-        style="margin-top: 30px"
-        v-permission="['admin', 'login']"
-      >
-        Both Can see this
+      <img v-permission="[role]" src="../../assets/f778738c-e4f8-4870-b634-56703b4acafe.gif" alt="">
+      <br />
+      <div class="role-item" style="margin-top: 30px">
+        Only
+        <span class="role-class">normal</span> Can see
+        this
       </div>
-      <span class="tag">v-premisson="['admin','login']"]</span>
+      <span class="tag">v-premisson="['normal']"]</span>
+      <img v-permission="['normal']" src="../../assets/f778738c-e4f8-4870-b634-56703b4acafe.gif" alt="">
     </div>
   </div>
 </template>
@@ -33,10 +27,10 @@ import permission from "../../directives/permission";
 import axios from "axios";
 export default {
   name: "Directive",
-  data() {
-    return {
-      role: localStorage.token,
-    };
+  computed:{
+    role(){
+      return this.$store.state.user_Login.role
+    }
   },
   watch: {
     role(newValue, oldValue) {
@@ -74,6 +68,16 @@ export default {
 .title,
 .shiftrole {
   margin: 20px;
+}
+.tit_role{
+  display: inline-block;
+  width: 100px;
+  height:40px ;
+  line-height: 40px;
+  text-align: center;
+  background-color: #1890ff;
+  border-radius: 10px;
+  margin-left: 20px;
 }
 .look {
   margin: 40px;

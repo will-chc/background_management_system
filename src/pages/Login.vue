@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import request from '../api/request'
 export default {
   name: "Login",
@@ -60,31 +59,15 @@ export default {
         this.u_falg = false;
       }
     },
-    addasyncRoutes() {
-        //配置动态路由
-        this.$router.addRoute("permission",this.$store.state.asyncRoutes.asyncRoute);
-        // 添加到路由表
-        this.$store.commit('asyncRoutes/InitRoutes',this.$router.options.routes);
-        this.$store.commit('asyncRoutes/AddRoutes',this.$store.state.asyncRoutes.asyncRoute)
-    },
     async login() {
         let user = {
           username:this.username,
           password:this.password,
         }
       // 发送请求获取登录信息
-      await axios({
-        method: "POST",
-        url: "http://127.0.0.1:8000/user",
-        data: user,
-        
-      }).then((res) => {
-        // this.$store.commit("user_Login/SetToken", res.data.token);
-        // this.$store.commit('asyncRoutes/GetASyncRoute',res.data.asyncRoutes)
+      await request('/user',"POST",user).then((res) => {
+        localStorage.setItem('token',res.data.token)
       });
-       console.log(123);
-      // this.addasyncRoutes();
-     
       //跳转路由
       this.$router.push({
         name:'home'

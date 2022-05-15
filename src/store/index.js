@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 
 import booklist from './booklist'
 
+import request from '../api/request'
+
 //使用vuex插件
 Vue.use(Vuex);
 
@@ -14,55 +16,12 @@ const user_Login = {
     state: {
         role:""
     },
-    //准备action，用于响应组件中的动作
-    actions: {
-        
-    },
     mutations: {
         getRole(state, role) {
            state.role = role
         },
-        DelToken(state, token) {
-            state.token = "";
-            localStorage.removeItem('token');
-        },
-        ShiftRole(state,value){
-            state.token = value;
-            localStorage.token = value;
-        }
-    }
-}
-
-// 路由信息
-const asyncRoutes = {
-    namespaced:true,
-    state:{
-        routes:[       
-        ],
-        asyncRoute:{
-
-        }
     },
-    mutations: {
-        InitRoutes(state,value){
-            state.routes = value;
-        },
-        AddRoutes(state,value){
-            state.routes.forEach(item=>{
-                if(item.name=='permission'){
-                    item.children.length = 2;
-                    item.children.push(value)
-                }
-            })
-        },
-        GetASyncRoute(state,value){
-            value.component = (resolve) => { require([`@/components/Permission/${localStorage.token}`], resolve) },
-            state.asyncRoute = value;
-        },
-    }
-   
 }
-
 // 导航栏折叠
 const menuCollapse = {
     namespaced:true,
@@ -110,13 +69,44 @@ const bookTable = {
     }
 }
 
+//面包屑导航
+const tagList = {
+
+    state:{
+        visitedView:[
+            {
+                title: "首页",
+                current: true,
+                path: "/home",
+            }
+        ]
+    },
+    mutations:{
+        //添加用户访问过的页面
+        addVisitedView(state,view){
+            if(state.visitedView.some(v=>v.path ===view.path)) return 
+            state.visitedView.push(view)
+        },
+        //关闭用户访问过的页面
+        delVisitedView(state,view){
+            for(const [i,v] of state.visitedView.entries()){
+                if(v.path === view.path){
+                    state.visitedView.splice(i,1);
+                    console.log(i);
+                    break
+                }
+            }
+        }
+    }
+}
+
 
 // 创建并暴露store
 export default new Vuex.Store({
     modules: {
         user_Login,
-        asyncRoutes,
         menuCollapse,
         bookTable,
+        tagList
     }
 });

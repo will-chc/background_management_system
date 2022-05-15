@@ -3,6 +3,7 @@
      mode="vertical"
      :collapse="$store.state.menuCollapse.isCollapse"
     style="width='200px'"
+    :default-active="$route.path"
     >
     <SidebarItem></SidebarItem>
     </el-menu>

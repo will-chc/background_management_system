@@ -5,7 +5,7 @@ export default {
   inserted(el, binding, vnode) {
     const { value } = binding;
     //获取登录角色权限
-    let roles = [store.state.user_Login.token];
+    let roles = [store.state.user_Login.role];
     if (value && value instanceof Array && value.length > 0) {
       const permissionRoles = value;
       //Array.some 判断是否通过预设条件

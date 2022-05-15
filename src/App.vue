@@ -11,6 +11,7 @@ import request from "./api/request";
 export default {
   name: "App",
   created() {
+    //判断是否登录
     let loginPage = {
       name: "login",
       path: "/login",
@@ -20,14 +21,7 @@ export default {
       meta: { title: "登录页面"},
     };
     this.$router.addRoute(loginPage);
-    //判断是否登录
     this.isLogin();
-  },
-
-  provide() {
-    return {
-      reload: this.reload,
-    };
   },
   data() {
     return {
@@ -35,25 +29,17 @@ export default {
     };
   },
   methods: {
-    async isLogin() {
-      await request("/user", "GET").then((res) => {
-        console.log(res.status);
-        if (res.status === 200) {
-          //存储用户权限
-          this.$store.commit("user_Login/getRole", res.data.role);
+    //检测登录
+    isLogin() {
+        if (this.$store.state.user_Login.role) {
+          // 
           this.$router.push("/");
         } else {
+          //跳转到登录页面
           this.$router.push({
             path: "/login",
           });
         }
-      });
-    },
-    reload() {
-      this.isRouterView = false;
-      this.$nextTick(() => {
-        this.isRouterView = true;
-      });
     },
   },
 };

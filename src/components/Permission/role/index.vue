@@ -10,7 +10,7 @@ export default {
     name:'LoginRole',
     data() {
         return {
-            role:this.$store.state.user_Login.token
+            role:this.$store.state.user_Login.role
         }
     },
 }
