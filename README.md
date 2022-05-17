@@ -22,15 +22,13 @@
 > 
 >             数据包含一个token和对应角色的动态路由表
 > 
-> - 对获取到的动态路由表保存到vuex中，并且注册路由。
-> 
-> - 将登录信息保存到localstorage中，使用路由守卫beforeEach判断登录状态，没有token数据则跳转回登录页面。
+> - 处理路由关系表，注册路由
 > 
 > ---
 
 ## 侧边栏
 
-> - 使用Element UI 根据vuex 中的路由遍历生成侧边栏，路由对应子路由生成子菜单
+> - 使用Element UI 根据注册的路由信息遍历生成侧边栏，路由对应子路由生成子菜单
 > 
 > - 并且绑定路由跳转
 > 
@@ -66,17 +64,17 @@
 > 
 >     面包屑
 > 
->         面包屑的生成时通过路由守卫beforeEach，当跳转路由时向页签组件传递页面的title并且在页签数组taglist中检测是否已经存在，存在就将其标为当前，否则添加到页签数组中，根据页签数组遍历生成页签元素，并且绑定相应的路由。绑定router.push
+>         页签数据记录访问过的页面，保存到vuex中，根据页签数据生成页签元素，根据当前路由和页签数据中的路由信息进行比对，使得当前页签激活
 > 
 >         删除
 > 
 >                 从数组中将对应的页签数据删除
 > 
-> - 在router beforeEach 中实现全局事件总线用于传递数据
+> - `//在router beforeEach 中实现全局事件总线用于传递数据`
 >   
->   - 如何获取this
+>   - `//如何获取this`
 >     
->     - 在router.js文件中定义一个函数，并且导入到入口文件中在vue的beforecreated钩子中调用该函数，并且将this（指向vue实例）以参数的形式传入。
+>     - `//在router.js文件中定义一个函数，并且导入到入口文件中在vue的beforecreated钩子中调用该函数，并且将this（指向vue实例）以参数的形式传入。`
 
 ---
 
@@ -122,11 +120,7 @@
 >   
 >   - 也可以通过v-if实现权限控制
 > 
-> - 权限切换按钮
->   
->   - 修改localStorage和vuex中的登录信息，并且更新路由和导航栏
->   
->   - 同时实现指令权限的展示
+> - 
 
 ---
 
@@ -205,5 +199,5 @@
 > - 配置text-loader
 > 
 > - 引入md文件 
-![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo1.png)
-![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo2.png)
+>   ![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo1.png)
+>   ![image](https://gitee.com/will-chc/background_management_system/raw/master/src/assets/demo2.png)
